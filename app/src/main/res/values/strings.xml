@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">UEventDemo</string>
+    <string name="app_name">UEvent Demo</string>
+    <string name="screen_title">Wake-up listener</string>
+    <string name="listening">Listening…</string>
+    <string name="last_wakeup_label">Last wakeup</string>
+    <string name="last_wakeup_none">—</string>
+    <string name="notif_status_on">Notifications on (background alerts work).</string>
+    <string name="notif_status_off">Notifications off — grant permission or use settings below.</string>
+    <string name="btn_notification_settings">Notification settings</string>
+    <string name="wakeup_toast_message">Wake up</string>
+    <string name="wakeup_notification_channel_name">Wake-up</string>
+    <string name="wakeup_notification_channel_desc">Background wake-up alerts</string>
+    <string name="wakeup_notification_title">Wake up</string>
+    <string name="wakeup_notification_text">Wake-up detected</string>
+    <string name="wakeup_popup_title">Wake up</string>
+    <string name="wakeup_popup_subtitle">Wake-up detected</string>
+    <string name="service_channel_name">Wake listener service</string>
+    <string name="service_channel_desc">Keeps wake-up listener active in background</string>
+    <string name="service_notification_title">Wake listener is running</string>
+    <string name="service_notification_text">Listening for wake-up events in background</string>
 </resources>

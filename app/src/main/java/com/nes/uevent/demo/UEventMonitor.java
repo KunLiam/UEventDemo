@@ -7,7 +7,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.os.UEventObserver;
-import android.widget.Toast;
 
 public class UEventMonitor {
     private static final String TAG = "UEventMonitor";
@@ -21,6 +20,16 @@ public class UEventMonitor {
     private Context mContext;
 
     private Handler mHandler = new Handler(Looper.getMainLooper());
+
+    public interface WakeupCallback {
+        void onWakeup();
+    }
+
+    private WakeupCallback mWakeupCallback;
+
+    public void setWakeupCallback(WakeupCallback callback) {
+        mWakeupCallback = callback;
+    }
 
     public UEventMonitor(Context context) {
         mContext = context;
@@ -51,7 +60,14 @@ public class UEventMonitor {
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(mContext, "Wake up", Toast.LENGTH_SHORT).show();
+                            Log.i(
+                                    TAG,
+                                    "Wakeup UEvent; appUiVisible="
+                                            + UEventDemoApplication.isAppInForeground());
+                            WakeFeedbackHelper.showWakeupFeedback(mContext);
+                            if (mWakeupCallback != null) {
+                                mWakeupCallback.onWakeup();
+                            }
                         }
                     });
                 }
